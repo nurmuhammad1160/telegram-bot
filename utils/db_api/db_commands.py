@@ -116,12 +116,13 @@ class Database:
         # subcategory_code,
         subcategory_name,
         lesson_name,
+        lesson_number,
         videoId=None,
         telegram=None,
         youtube=None,
         description="",
     ):
-        sql = "INSERT INTO products_product (, category_name, , subcategory_name, lesson_name, videId, telegram, youtube, description) VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *"
+        sql = "INSERT INTO products_product (, category_name, , subcategory_name, lesson_name, lesson_number, videId, telegram, youtube, description) VALUES($1, $2, $3, $4, $5, $6, $7, $8) returning *"
         return await self.execute(
             sql,
             # category_code,
@@ -129,6 +130,7 @@ class Database:
             # subcategory_code,
             subcategory_name,
             lesson_name,
+            lesson_number,
             videoId,
             telegram,
             youtube,

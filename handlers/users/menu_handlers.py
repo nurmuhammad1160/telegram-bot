@@ -14,7 +14,7 @@ from loader import dp, db, bot
 
 
 # Bosh menyu matni uchun handler
-@dp.message_handler(text="Bosh menyu")
+@dp.message_handler(text="Darslarni boshlash")
 async def show_menu(message: types.Message):
     # Foydalanuvchilarga barcha kategoriyalarni qaytaramiz
     await list_categories(message)
@@ -28,7 +28,7 @@ async def list_categories(message: Union[CallbackQuery, Message], **kwargs):
 
     # Agar foydalanuvchidan Message kelsa Keyboardni yuboramiz
     if isinstance(message, Message):
-        await message.answer("Bo'lim tanlang", reply_markup=markup)
+        await message.answer("Darslarni tanlang", reply_markup=markup)
 
     # Agar foydalanuvchidan Callback kelsa Callback natbibi o'zgartiramiz
     elif isinstance(message, CallbackQuery):
@@ -48,7 +48,7 @@ async def list_subcategories(callback: CallbackQuery, category, **kwargs):
 async def list_items(callback: CallbackQuery, category, subcategory, **kwargs):
     markup = await items_keyboard(category, subcategory)
 
-    await callback.message.edit_text(text="Mahsulot tanlang", reply_markup=markup)
+    await callback.message.edit_text(text="Darsni tanlang", reply_markup=markup)
 
 
 # Biror mahsulot uchun Xarid qilish tugmasini yuboruvchi funksiya

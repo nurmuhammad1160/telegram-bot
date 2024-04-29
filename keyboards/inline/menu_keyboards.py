@@ -96,13 +96,13 @@ async def subcategories_keyboard(category):
 async def items_keyboard(category, subcategory):
     CURRENT_LEVEL = 2
 
-    markup = InlineKeyboardMarkup(row_width=2)
+    markup = InlineKeyboardMarkup(row_width=3)
 
     # Ost-kategorioyaga tegishli barcha mahsulotlarni olamiz
     items = await db.get_products(category, subcategory)
     for item in items:
         # Tugma matnini yasaymiz
-        button_text = f"{item['lesson_name']}"
+        button_text = f"{item['lesson_number']}-dars"
 
         # Tugma bosganda qaytuvchi callbackni yasaymiz: Keyingi bosqich +1 va kategoriyalar
         callback_data = make_callback_data(
@@ -130,7 +130,7 @@ async def items_keyboard(category, subcategory):
 # Berilgan mahsulot uchun Xarid qilish va Ortga yozuvlarini chiqaruvchi tugma keyboard
 def item_keyboard(category, subcategory, item_id):
     CURRENT_LEVEL = 3
-    markup = InlineKeyboardMarkup(row_width=2)
+    markup = InlineKeyboardMarkup(row_width=3)
     markup.row(
         InlineKeyboardButton(
             text=f"🛒 Xarid qilish", callback_data=buy_item.new(item_id=item_id)
